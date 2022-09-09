@@ -1,0 +1,34 @@
+
+group 'org.vertx'
+version '1.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+            //vertx-web
+            'io.vertx:vertx-web:4.2.6',
+            //Nacos
+            'com.alibaba.nacos:nacos-client:2.1.0',
+            //Nacos需要的日志包
+            'org.slf4j:slf4j-log4j12:1.7.36',
+            //参数校验器
+            'com.beust:jcommander:1.82',
+            //扫包
+            'org.reflections:reflections:0.9.11',
+            //反射库
+            'com.esotericsoftware:reflectasm:1.11.9',
+//            //引入Schema
+//            'team.ytk:schema:0.0.1-SNAPSHOT',
+//            //引入Schema校验
+//            'team.ytk:schema_validator:0.0.1-SNAPSHOT',
+            project(':rpc'),
+            project(':rbac-framework')
+    )
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,4 @@
+rootProject.name = 'Vertx'
+include('vertx-web', 'rpc', 'rbac-framework')
+include 'demo'
+

@@ -1,0 +1,76 @@
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin:'application'
+    //maven 上传插件
+    apply plugin:'maven-publish'
+    group 'org.vertx'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral(url: "https://maven.aliyun.com/repository/central")
+    }
+
+    dependencies {
+        implementation(
+                'io.vertx:vertx-core:4.2.6',
+                //json核心
+                'com.fasterxml.jackson.core:jackson-core:2.12.1',
+                'com.fasterxml.jackson.core:jackson-databind:2.13.2.2',
+                'com.fasterxml.jackson.core:jackson-annotations:2.12.1',
+                //spring核心包
+                'org.springframework:spring-core:5.3.15',
+                'org.springframework:spring-beans:5.3.18',
+                'org.springframework:spring-context:5.2.1.RELEASE',
+                //commons-lang3工具包
+                'org.apache.commons:commons-lang3:3.9'
+        )
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    /**
+     * 打包
+     */
+    jar {
+        manifestContentCharset 'utf-8'
+        metadataCharset 'utf-8'
+    }
+}
+
+/**
+ * 清理编译classes
+ */
+task buildClean{
+    println("------------------------清理编译缓存 ------------------------")
+    String path = rootDir.toString();
+    String rbacBuildPath = path + File.separator + "rbac-framework" + File.separator + "build"
+    String rpcBuildPath = path + File.separator + "rpc" + File.separator + "build"
+    String vertxWebBuildPath = path + File.separator + "vertx-web" + File.separator + "build"
+
+    println("------------------------清理rbac-framework编译缓存------------------------")
+    delete(rbacBuildPath)
+    if (!new File(rbacBuildPath).exists())
+        println("------------------------清理rbac-framework编译缓存完成------------------------")
+    else
+        System.err.println("清理rbac-framework编译失败!")
+
+    println("------------------------清理rpc编译缓存------------------------")
+    delete(rpcBuildPath)
+    if (!new File(rpcBuildPath).exists())
+        println("------------------------清理rpc编译缓存完成------------------------")
+    else
+        System.err.println("清理rpc编译失败!")
+
+    println("------------------------清理vertx-web编译缓存------------------------")
+    delete(vertxWebBuildPath)
+    if (!new File(vertxWebBuildPath).exists())
+        println("------------------------清理vertx-web编译缓存完成------------------------")
+    else
+        System.err.println("清理vertx-web编译失败!")
+}
