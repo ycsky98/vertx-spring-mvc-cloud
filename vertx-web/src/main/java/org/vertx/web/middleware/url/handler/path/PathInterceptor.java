@@ -18,7 +18,7 @@ public class PathInterceptor implements Interceptor{
     /**
      * 构造器传入RouterContext上下文
      * 
-     * @param routingContext
+     * @param webConfig
      */
     public PathInterceptor(WebConfig webConfig){
         this.webConfig = webConfig;

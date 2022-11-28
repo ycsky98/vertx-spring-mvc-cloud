@@ -13,7 +13,7 @@ import org.vertx.web.annotations.rpc.Server;
 // 本地服务
 @Server(serverName = "testServer", host = "localhost", port = 8888)
 // 远程服务调用配置
-@RpcServersConnection(rpcConnections = {@RpcConnection(serviceName = "test2Server", host = "localhost", port = 8889)})
+//@RpcServersConnection(rpcConnections = {@RpcConnection(serviceName = "test2Server", host = "localhost", port = 8889)})
 public class Test {
 
     public static void main(String[] args) {
