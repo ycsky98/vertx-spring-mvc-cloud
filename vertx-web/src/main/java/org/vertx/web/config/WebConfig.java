@@ -174,7 +174,7 @@ public class WebConfig {
      *
      * @return
      */
-    public Reflections gReflections() {
+    public Reflections getReflections() {
         return this.reflections;
     }
 
