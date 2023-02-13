@@ -10,6 +10,9 @@ subprojects {
     repositories {
         mavenLocal()
         mavenCentral(url: "https://maven.aliyun.com/repository/central")
+        maven {
+            url "https://jitpack.io/"
+        }
     }
 
     dependencies {
@@ -49,9 +52,9 @@ subprojects {
 task buildClean{
     println("------------------------清理编译缓存 ------------------------")
     String path = rootDir.toString();
-    String rbacBuildPath = path + File.separator + "rbac-framework" + File.separator + "build"
-    String rpcBuildPath = path + File.separator + "rpc" + File.separator + "build"
-    String vertxWebBuildPath = path + File.separator + "vertx-web" + File.separator + "build"
+    String rbacBuildPath = path + File.separator + "rbac-framework" + File.separator + "out"
+    String rpcBuildPath = path + File.separator + "rpc" + File.separator + "out"
+    String vertxWebBuildPath = path + File.separator + "vertx-web" + File.separator + "out"
 
     println("------------------------清理rbac-framework编译缓存------------------------")
     delete(rbacBuildPath)
